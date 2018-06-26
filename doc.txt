@@ -1,0 +1,38 @@
+ansible-doc l | grep pip  //doc cua ansible , list , or voi tu khoa pip
+
+truoc khi install chay
+ansible -i inventory.ini all -b -m apt -a "upgrade=yes"
+ansible -i inventory.ini all -b -m apt -a "name=python-pip state=present"
+
+//install
+
+
+ansible -i inventory.ini all -b -m apt -a "name=python-pip state=absent" //remove
+
+
+ansible -i <inventory> <target> -m <module> -a <arguments>
+
+ansible -i inventory.ini all -m ping
+ansible -i inventory.ini all -a "hostname"
+ansible -i inventory.ini all -a "df -h"
+ansible -i inventory.ini all -a "du -hs /home"
+ansible -i inventory.ini all -a "free -m"
+ansible -i inventory.ini all -a "python --version"
+ansible -i inventory.ini all -b -m apt -a "upgrade=yes"
+ansible -i inventory.ini all -b -m apt -a "name=python-pip state=present"
+
+
+
+
+//install pydf
+ansible -i inventory.ini all -b -m apt -a "upgrade=yes"
+ansible -i inventory.ini all -b -m pip -a "name=pydf state=present"
+ansible -i inventory.ini all -a 'pydf'
+
+
+-b mean this ad-hoc command will be run with sudo mode
+-m is module's name (default: shell)
+-a is argument run with module.
+state
+present: Command will be run once
+absent: Delete [package/app] if it existed on machince
